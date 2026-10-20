@@ -1,0 +1,94 @@
+:root {
+  --latar: #e9f0ee;
+  --tinta: #12302e;
+  --hijau: #1f6f66;
+  --kuning: #f0b93a;
+  --kartu: #ffffff;
+  --garis: #c9d8d5;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Public Sans", system-ui, sans-serif;
+  background: var(--latar);
+  color: var(--tinta);
+  line-height: 1.6;
+  padding: 0 1.25rem;
+}
+
+h1, h2 {
+  font-family: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  line-height: 1.1;
+}
+
+/* Hero */
+.hero {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4.5rem 0 2.5rem;
+}
+.sapaan { color: var(--hijau); font-weight: 600; }
+.hero h1 {
+  font-size: clamp(2.8rem, 10vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0.25rem 0 1rem;
+}
+.intro { max-width: 46ch; font-size: 1.1rem; }
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+
+/* Kartu profil */
+.kartu {
+  background: var(--kartu);
+  border: 2px solid var(--tinta);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 8px 8px 0 var(--kuning);
+}
+.kartu dl > div {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px dashed var(--garis);
+}
+.kartu dl > div:last-child { border-bottom: 0; }
+dt { color: var(--hijau); font-weight: 600; }
+dd { font-weight: 400; }
+
+/* Keahlian */
+.keahlian ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.keahlian li {
+  background: var(--hijau);
+  color: #fff;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 0 2.5rem;
+  border-top: 1px solid var(--garis);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .kartu dl > div { grid-template-columns: 1fr; gap: 0.1rem; }
+}
