@@ -1,20 +1,22 @@
 :root {
-  --latar: #e9f0ee;
-  --tinta: #12302e;
-  --hijau: #1f6f66;
-  --kuning: #f0b93a;
-  --kartu: #ffffff;
-  --garis: #c9d8d5;
+  --hitam: #0b0b0c;
+  --panel: #151517;
+  --garis: #2a2a2e;
+  --teks: #ededed;
+  --redup: #9a9aa0;
+  --aksen: #c9a96a;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+html { scroll-behavior: smooth; }
+
 body {
   font-family: "Public Sans", system-ui, sans-serif;
-  background: var(--latar);
-  color: var(--tinta);
-  line-height: 1.6;
-  padding: 0 1.25rem;
+  background: var(--hitam);
+  color: var(--teks);
+  line-height: 1.65;
+  padding: 0 1.5rem;
 }
 
 h1, h2 {
@@ -22,161 +24,127 @@ h1, h2 {
   line-height: 1.1;
 }
 
-/* Hero */
+/* ---------- Hero ---------- */
 .hero {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
-  padding: 4.5rem 0 2.5rem;
+  padding: 6rem 0 3rem;
+  border-bottom: 1px solid var(--garis);
 }
-.sapaan { color: var(--hijau); font-weight: 600; }
-.hero h1 {
-  font-size: clamp(2.8rem, 10vw, 5.5rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin: 0.25rem 0 1rem;
-}
-.intro { max-width: 46ch; font-size: 1.1rem; }
 
+.sapaan {
+  color: var(--aksen);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.hero h1 {
+  font-size: clamp(2.8rem, 9vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  margin: 0.4rem 0 1.2rem;
+}
+
+.intro {
+  max-width: 48ch;
+  color: var(--redup);
+  font-size: 1.1rem;
+}
+
+/* ---------- Konten ---------- */
 main {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
   display: grid;
-  gap: 2.5rem;
-  padding-bottom: 3rem;
+  gap: 3.5rem;
+  padding: 3rem 0 4rem;
 }
 
-h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
 
 /* Kartu profil */
 .kartu {
-  background: var(--kartu);
-  border: 2px solid var(--tinta);
-  border-radius: 14px;
-  padding: 1.5rem;
-  box-shadow: 8px 8px 0 var(--kuning);
+  background: var(--panel);
+  border: 1px solid var(--garis);
+  border-left: 3px solid var(--aksen);
+  border-radius: 6px;
+  padding: 1.75rem;
 }
+
 .kartu dl > div {
   display: grid;
-  grid-template-columns: 7rem 1fr;
+  grid-template-columns: 8rem 1fr;
   gap: 1rem;
-  padding: 0.75rem 0;
-  border-bottom: 1px dashed var(--garis);
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--garis);
 }
-.kartu dl > div:last-child { border-bottom: 0; }
-dt { color: var(--hijau); font-weight: 600; }
-dd { font-weight: 400; }
+.kartu dl > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.kartu dl > div:first-child { padding-top: 0; }
+
+dt { color: var(--redup); }
+dd { font-weight: 600; }
 
 /* Keahlian */
 .keahlian ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.7rem;
 }
+
 .keahlian li {
-  background: var(--hijau);
-  color: #fff;
-  padding: 0.45rem 1rem;
-  border-radius: 999px;
-  font-weight: 600;
+  border: 1px solid var(--garis);
+  background: var(--panel);
+  padding: 0.5rem 1.1rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
 }
 
 footer {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
-  padding: 1.5rem 0 2.5rem;
+  padding: 1.75rem 0 2.5rem;
   border-top: 1px solid var(--garis);
+  color: var(--redup);
   font-size: 0.9rem;
 }
 
+/* ---------- Animasi ---------- */
+@keyframes masuk {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.sapaan  { animation: masuk 0.6s ease-out both; }
+.hero h1 { animation: masuk 0.7s 0.12s ease-out both; }
+.intro   { animation: masuk 0.7s 0.24s ease-out both; }
+.kartu   { animation: masuk 0.7s 0.4s ease-out both; }
+.keahlian { animation: masuk 0.7s 0.55s ease-out both; }
+footer   { animation: masuk 0.7s 0.7s ease-out both; }
+
+.kartu, .keahlian li, .kartu dl > div {
+  transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.kartu:hover { border-color: #3a3a40; border-left-color: var(--aksen); }
+
+.keahlian li:hover {
+  border-color: var(--aksen);
+  color: var(--aksen);
+  transform: translateY(-3px);
+}
+
+:focus-visible { outline: 2px solid var(--aksen); outline-offset: 3px; }
+
 @media (max-width: 480px) {
+  .hero { padding-top: 4rem; }
   .kartu dl > div { grid-template-columns: 1fr; gap: 0.1rem; }
 }
 
-/* ============================================
-   ANIMASI
-   ============================================ */
-
-/* 1. Urutan masuk saat halaman dibuka */
-@keyframes masuk {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes kartu-muncul {
-  0%   { opacity: 0; transform: translateY(30px) rotate(-2deg) scale(0.96); box-shadow: 0 0 0 var(--kuning); }
-  70%  { transform: translateY(-4px) rotate(0.5deg) scale(1.01); }
-  100% { opacity: 1; transform: none; box-shadow: 8px 8px 0 var(--kuning); }
-}
-
-@keyframes chip-muncul {
-  from { opacity: 0; transform: scale(0.6); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-.sapaan { animation: masuk 0.6s ease-out both; }
-.hero h1 { animation: masuk 0.7s 0.15s ease-out both; }
-.intro { animation: masuk 0.7s 0.3s ease-out both; }
-.kartu { animation: kartu-muncul 0.9s 0.5s cubic-bezier(.2,.8,.3,1) both; }
-
-.keahlian h2 { animation: masuk 0.6s 1s ease-out both; }
-.keahlian li { animation: chip-muncul 0.45s cubic-bezier(.3,1.6,.5,1) both; }
-.keahlian li:nth-child(1) { animation-delay: 1.1s; }
-.keahlian li:nth-child(2) { animation-delay: 1.2s; }
-.keahlian li:nth-child(3) { animation-delay: 1.3s; }
-.keahlian li:nth-child(4) { animation-delay: 1.4s; }
-.keahlian li:nth-child(5) { animation-delay: 1.5s; }
-
-footer { animation: masuk 0.6s 1.7s ease-out both; }
-
-/* 2. Bola basket memantul di samping sapaan */
-@keyframes pantul {
-  0%, 100% { transform: translateY(0) scaleY(1); animation-timing-function: cubic-bezier(.3,0,.8,.5); }
-  45%      { transform: translateY(-18px) scaleY(1.04); animation-timing-function: cubic-bezier(.2,.5,.7,1); }
-  50%      { transform: translateY(-18px); }
-  92%      { transform: translateY(0) scaleY(1); }
-  96%      { transform: translateY(2px) scaleY(0.85); }
-}
-
-.bola {
-  display: inline-block;
-  width: 1.1rem;
-  height: 1.1rem;
-  margin-left: 0.4rem;
-  vertical-align: middle;
-  border-radius: 50%;
-  background:
-    linear-gradient(var(--tinta), var(--tinta)) center / 100% 2px no-repeat,
-    linear-gradient(var(--tinta), var(--tinta)) center / 2px 100% no-repeat,
-    #e8782f;
-  border: 2px solid var(--tinta);
-  animation: pantul 1.1s 1.5s infinite;
-}
-
-/* 3. Animasi saat kursor diarahkan / disentuh */
-.kartu { transition: transform 0.25s ease, box-shadow 0.25s ease; }
-.kartu:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 12px 12px 0 var(--kuning);
-}
-
-.kartu dl > div { transition: padding-left 0.25s ease, background 0.25s ease; }
-.kartu dl > div:hover {
-  padding-left: 0.75rem;
-  background: var(--latar);
-}
-
-.keahlian li {
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-  cursor: default;
-}
-.keahlian li:hover {
-  background: var(--kuning);
-  color: var(--tinta);
-  transform: translateY(-4px) rotate(-3deg);
-}
-
-/* 4. Hormati pengguna yang menonaktifkan animasi */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation: none !important;
